@@ -3,17 +3,22 @@ import { useForm } from 'react-hook-form'
 import { useEffect , useState } from 'react'
 import './Login.css'
 import AuthContext from '../Context/AuthContext'
+import { useAuth } from '../Context/AuthContext'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 const Login = () => {
+
+    const navigate = useNavigate()
 const [errorMessage, setErrorMessage] = useState("");
 
 const {register, handleSubmit,watch, formState:{errors}} = useForm()
 
-useEffect(() => {
+const onSubmit = (data) => {
  const storedUser = JSON.parse(localStorage.getItem("user"))
 
  if(!storedUser){
-    setErrorMessage("No account found")
+  return  setErrorMessage("No account found");
+    
  }
 
  if(
@@ -26,9 +31,10 @@ useEffect(() => {
 
  login(); // context wala
   navigate("/dashboard");
-}, [])
+}
 
-const {login} = useContext(AuthContext)
+const {login} = useAuth();
+
   return (
     <div className='loginPage'>
       <h1>Login page</h1>
