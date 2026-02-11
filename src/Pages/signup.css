@@ -1,0 +1,23 @@
+.signuppage{
+    width: 100%;
+    max-width: 30vw;
+    margin: 2% auto;
+    border: 2px solid black;
+    box-shadow: 0 0 10px black;
+    background: orange;
+    padding: 1rem;
+
+}
+
+.signuppage .inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+}
+
+
+.signuppage button{
+    margin: 0.5rem auto;
+    display: block;
+}
